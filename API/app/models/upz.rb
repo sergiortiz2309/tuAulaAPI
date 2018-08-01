@@ -1,0 +1,3 @@
+class Upz < ApplicationRecord
+  
+end

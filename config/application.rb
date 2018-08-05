@@ -32,10 +32,14 @@ module NewTuaula
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Request-Method' => %w{GET POST PUT DELETE OPTIONS}.join(",")
-    }
-
+    Rails.application.config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'localhost:4200'
+        resource '*',
+          headers: :any,
+          methods: %i(get post put patch delete options head)
+      end
+    end
+    
   end
 end

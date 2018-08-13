@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :upzs 
   resources :modalidads 
   resources :categoria 
+  resources :cursos
+  resources :clases
 end
